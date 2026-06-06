@@ -1,0 +1,468 @@
+.app-shell {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top right, rgba(245, 130, 32, 0.22), transparent 26%),
+    linear-gradient(180deg, #fffaf5 0%, #f3f1ec 100%);
+}
+
+.page-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.2rem;
+  background: rgba(255, 250, 245, 0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(232, 133, 34, 0.18);
+}
+
+.brand-title {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+.brand-subtitle {
+  margin: 0.2rem 0 0;
+  color: #6f6b65;
+  font-size: 0.86rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  padding: 0.65rem 1rem;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid #ece4dc;
+  color: #44403b;
+}
+
+.nav-link.active,
+.nav-link:hover {
+  background: #f58220;
+  border-color: #f58220;
+  color: #ffffff;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.hero-card,
+.panel,
+.product-card,
+.cart-panel,
+.stats-card,
+.report-card,
+.admin-table,
+.reservation-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(228, 221, 212, 0.88);
+  border-radius: 24px;
+  box-shadow: 0 18px 50px rgba(81, 59, 31, 0.08);
+}
+
+.hero-card {
+  padding: 2rem;
+}
+
+.hero-card h1,
+.page-header h2,
+.admin-content h2 {
+  margin: 0 0 0.75rem;
+  color: #231f1c;
+}
+
+.hero-card p,
+.page-header p,
+.section-copy,
+.muted-text {
+  color: #675f58;
+  line-height: 1.6;
+}
+
+.hero-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.metric {
+  padding: 1rem;
+  border-radius: 18px;
+  background: #fff6ec;
+}
+
+.metric strong {
+  display: block;
+  font-size: 1.2rem;
+  color: #c95b05;
+}
+
+.hero-visual {
+  min-height: 260px;
+  border-radius: 28px;
+  background:
+    linear-gradient(135deg, rgba(245, 130, 32, 0.9), rgba(251, 194, 95, 0.92)),
+    #f58220;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  color: #fffdfa;
+}
+
+.hero-visual-content {
+  max-width: 320px;
+}
+
+.hero-visual-badge {
+  display: inline-flex;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+  margin-bottom: 1rem;
+}
+
+.page-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.filters-bar {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.search-input,
+.form-grid input,
+.form-grid textarea,
+.form-grid select,
+.inline-input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  border: 1px solid #ddd3c9;
+  background: #fffdfb;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.tab-button,
+.primary-button,
+.ghost-button,
+.danger-button,
+.small-button {
+  border: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.tab-button,
+.ghost-button,
+.small-button {
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  background: #fff7ee;
+  color: #5c5148;
+}
+
+.tab-button.active,
+.primary-button,
+.small-button.primary {
+  background: linear-gradient(135deg, #f58220, #dd6b11);
+  color: #ffffff;
+}
+
+.primary-button,
+.danger-button {
+  padding: 0.9rem 1.2rem;
+  border-radius: 16px;
+  font-weight: 700;
+}
+
+.danger-button {
+  background: #d9534f;
+  color: #ffffff;
+}
+
+.ghost-button {
+  background: #f4efe8;
+}
+
+.product-grid,
+.stats-grid,
+.reports-grid,
+.admin-products-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.product-grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.product-card {
+  overflow: hidden;
+}
+
+.product-image {
+  height: 170px;
+  background-size: cover;
+  background-position: center;
+}
+
+.product-content {
+  padding: 1.1rem;
+}
+
+.product-meta,
+.price-row,
+.cart-line,
+.admin-row,
+.inline-actions,
+.summary-row,
+.availability-box {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.pill {
+  display: inline-flex;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: #fff3e2;
+  color: #a24d08;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.product-title {
+  margin: 0.5rem 0;
+}
+
+.price {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #c95b05;
+}
+
+.cart-layout,
+.reservation-layout,
+.admin-layout {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.cart-layout,
+.reservation-layout {
+  grid-template-columns: 1.4fr 0.8fr;
+}
+
+.cart-panel,
+.reservation-card,
+.panel,
+.admin-content,
+.admin-sidebar {
+  padding: 1.5rem;
+}
+
+.cart-item {
+  padding: 1rem 0;
+  border-bottom: 1px solid #efe7de;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.quantity-button {
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 10px;
+  background: #f4ede5;
+  cursor: pointer;
+}
+
+.summary-box {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.summary-total {
+  padding-top: 0.9rem;
+  border-top: 1px solid #efe7de;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.form-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.availability-box {
+  padding: 1rem;
+  border-radius: 16px;
+  background: #fff6ec;
+}
+
+.admin-layout {
+  grid-template-columns: 260px 1fr;
+}
+
+.admin-sidebar {
+  background: linear-gradient(180deg, #29201a, #403229);
+  color: #fff7f0;
+  border-radius: 24px;
+}
+
+.sidebar-menu {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 1rem;
+}
+
+.sidebar-button {
+  text-align: left;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  border: 0;
+  background: rgba(255, 255, 255, 0.08);
+  color: inherit;
+  cursor: pointer;
+}
+
+.sidebar-button.active {
+  background: linear-gradient(135deg, #f58220, #dd6b11);
+}
+
+.admin-content {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.stats-grid {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.stats-card {
+  padding: 1.2rem;
+}
+
+.stats-card strong {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: 1.4rem;
+}
+
+.admin-table {
+  overflow: hidden;
+}
+
+.admin-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 0.95rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #f0e7de;
+}
+
+.admin-table th {
+  background: #fff5ea;
+  color: #6a5646;
+}
+
+.reports-grid,
+.admin-products-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.report-card {
+  padding: 1.2rem;
+}
+
+.message {
+  padding: 0.9rem 1rem;
+  border-radius: 14px;
+  background: #fef5e7;
+  color: #9a5b16;
+}
+
+.message.success {
+  background: #eaf8ee;
+  color: #257942;
+}
+
+.empty-state {
+  padding: 2rem;
+  text-align: center;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #6a635d;
+}
+
+@media (max-width: 900px) {
+  .hero,
+  .cart-layout,
+  .reservation-layout,
+  .admin-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-metrics,
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .page-shell {
+    padding: 1.25rem 0.85rem 2rem;
+  }
+}

@@ -1,9 +1,16 @@
-function StatCard({ title, value, description }) {
+function StatCard({ title, value, description, Icon }) {
   return (
     <article className="stats-card">
-      <span className="pill">{title}</span>
+      <div className="stats-card-top">
+        <span className="pill pill-soft">{title}</span>
+        {Icon ? (
+          <div className="icon-chip">
+            <Icon size={18} />
+          </div>
+        ) : null}
+      </div>
       <strong>{value}</strong>
-      <p className="muted-text">{description}</p>
+      {description ? <p className="muted-text">{description}</p> : null}
     </article>
   )
 }

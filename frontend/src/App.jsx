@@ -1,15 +1,11 @@
 import { useMemo, useState } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Navbar from './components/Navbar'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import AdminPage from './pages/AdminPage'
-import CartPage from './pages/CartPage'
-import HomePage from './pages/HomePage'
-import ReservationsPage from './pages/ReservationsPage'
 import './App.css'
 
 const DELIVERY_FEE = 7.5
 
-function App() {
+function AppLayout() {
   const [cart, setCart] = useState([])
 
   const addToCart = (product) => {
@@ -42,28 +38,38 @@ function App() {
   )
 
   return (
+    <div className="app-shell app-shell-admin">
+      <main className="page-shell admin-page-shell">
+        <Routes>
+          <Route path="/" element={<Navigate replace to="/admin/dashboard" />} />
+          <Route path="/admin" element={<Navigate replace to="/admin/dashboard" />} />
+          <Route
+            path="/admin/:section"
+            element={
+              <AdminPage
+                addToCart={addToCart}
+                cart={cart}
+                cartCount={cartCount}
+                deliveryFee={DELIVERY_FEE}
+                onClearCart={clearCart}
+                onUpdateQuantity={updateCartItem}
+              />
+            }
+          />
+          <Route path="/catalogo" element={<Navigate replace to="/admin/catalogo" />} />
+          <Route path="/carrito" element={<Navigate replace to="/admin/carrito" />} />
+          <Route path="/reservas" element={<Navigate replace to="/admin/reservas" />} />
+          <Route path="*" element={<Navigate replace to="/admin/dashboard" />} />
+        </Routes>
+      </main>
+    </div>
+  )
+}
+
+function App() {
+  return (
     <BrowserRouter>
-      <div className="app-shell">
-        <Navbar cartCount={cartCount} />
-        <main className="page-shell">
-          <Routes>
-            <Route path="/" element={<HomePage addToCart={addToCart} />} />
-            <Route
-              path="/carrito"
-              element={
-                <CartPage
-                  cart={cart}
-                  deliveryFee={DELIVERY_FEE}
-                  onUpdateQuantity={updateCartItem}
-                  onClearCart={clearCart}
-                />
-              }
-            />
-            <Route path="/reservas" element={<ReservationsPage />} />
-            <Route path="/admin" element={<AdminPage />} />
-          </Routes>
-        </main>
-      </div>
+      <AppLayout />
     </BrowserRouter>
   )
 }

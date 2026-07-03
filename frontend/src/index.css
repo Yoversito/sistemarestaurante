@@ -1,21 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700&display=swap');
+
 :root {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #303030;
-  background: linear-gradient(180deg, #fff8f1 0%, #f7f4ef 100%);
+  font-family: 'Inter', 'Poppins', 'Segoe UI', sans-serif;
+  color: #292524;
+  background: #f3f1ec;
   color-scheme: light;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --bg: #f3f1ec;
+  --surface: rgba(255, 255, 255, 0.97);
+  --surface-soft: #f7f4ef;
+  --surface-muted: #ebe7df;
+  --text: #201c1a;
+  --text-soft: #6f6962;
+  --border: rgba(86, 72, 60, 0.1);
+  --shadow: 0 18px 44px rgba(42, 34, 27, 0.08);
+  --orange: #ef7d22;
+  --orange-deep: #d66412;
+  --orange-soft: #fff1e4;
+  --success: #1f8f54;
+  --danger: #d34d43;
+  --info: #2c7be5;
+  --warning: #b56b00;
 }
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   min-width: 320px;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(239, 125, 34, 0.1), transparent 24%),
+    radial-gradient(circle at top right, rgba(32, 28, 26, 0.04), transparent 22%),
+    linear-gradient(180deg, #f8f6f1 0%, var(--bg) 100%);
+  overflow-x: hidden;
 }
 
 a {
@@ -28,6 +55,11 @@ input,
 select,
 textarea {
   font: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
 }
 
 #root {

@@ -1,8 +1,11 @@
+import { ArrowLeft, MapPinned, ReceiptText, ShoppingCart } from 'lucide-react'
 import { useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 import CartItem from '../components/CartItem'
+import EmptyState from '../components/EmptyState'
 import { pedidosService } from '../services/api'
 
-function CartPage({ cart, deliveryFee, onUpdateQuantity, onClearCart }) {
+function CartPage({ cart, deliveryFee, embedded = false, onUpdateQuantity, onClearCart }) {
   const [direccionEntrega, setDireccionEntrega] = useState('Av. Principal 450, Huanuco')
   const [message, setMessage] = useState('')
   const [success, setSuccess] = useState(false)
@@ -43,23 +46,55 @@ function CartPage({ cart, deliveryFee, onUpdateQuantity, onClearCart }) {
 
   return (
     <div className="page-grid">
-      <div className="page-header">
-        <h2>Carrito de compras</h2>
-        <p>Modifica cantidades, revisa montos y confirma el pedido delivery.</p>
-      </div>
+      <section className="page-banner">
+        <div>
+          <span className="eyebrow">{embedded ? 'Modulo de pedido' : 'Carrito de compras'}</span>
+          <h2>Revisa tu pedido</h2>
+        </div>
+        {embedded ? null : (
+          <Link className="ghost-button" to="/">
+            <ArrowLeft size={16} />
+            Volver al catalogo
+          </Link>
+        )}
+      </section>
 
       <section className="cart-layout">
-        <div className="cart-panel">
+        <div className="cart-panel cart-items-panel">
+          <div className="panel-headline">
+            <div>
+              <h3>Productos seleccionados</h3>
+              <p className="muted-text">{cart.length} producto(s)</p>
+            </div>
+          </div>
+
           {cart.length ? (
             cart.map((item) => <CartItem item={item} key={item.id_producto} onUpdateQuantity={onUpdateQuantity} />)
           ) : (
-            <div className="empty-state">Tu carrito esta vacio por ahora.</div>
+            <EmptyState
+              action={
+                <Link className="primary-button" to="/">
+                  <ArrowLeft size={16} />
+                  Explorar el catalogo
+                </Link>
+              }
+              icon={ShoppingCart}
+              title="Tu carrito esta vacio"
+            />
           )}
         </div>
 
-        <aside className="cart-panel">
+        <aside className="cart-panel order-summary-card">
+          <div className="panel-headline">
+            <div>
+              <h3>Resumen del pedido</h3>
+            </div>
+            <div className="icon-chip">
+              <ReceiptText size={18} />
+            </div>
+          </div>
+
           <div className="summary-box">
-            <h3>Resumen</h3>
             <div className="summary-row">
               <span>Subtotal</span>
               <strong>S/ {subtotal.toFixed(2)}</strong>
@@ -72,16 +107,22 @@ function CartPage({ cart, deliveryFee, onUpdateQuantity, onClearCart }) {
               <span>Total</span>
               <strong>S/ {total.toFixed(2)}</strong>
             </div>
-            <div>
-              <label htmlFor="direccion">Direccion de entrega</label>
-              <input
-                className="search-input"
-                id="direccion"
-                onChange={(event) => setDireccionEntrega(event.target.value)}
-                value={direccionEntrega}
-              />
+
+            <div className="icon-input">
+              <MapPinned size={18} />
+              <div>
+                <label htmlFor="direccion">Direccion de entrega</label>
+                <input
+                  className="search-input"
+                  id="direccion"
+                  onChange={(event) => setDireccionEntrega(event.target.value)}
+                  value={direccionEntrega}
+                />
+              </div>
             </div>
-            <button className="primary-button" onClick={handleCheckout} type="button">
+
+            <button className="primary-button primary-button-wide" onClick={handleCheckout} type="button">
+              <ShoppingCart size={16} />
               Confirmar pedido
             </button>
             {message ? <div className={`message ${success ? 'success' : ''}`}>{message}</div> : null}
